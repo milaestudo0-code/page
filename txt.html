@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>maxia⁺ — Soluções Digitais de Alta Performance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#6e0deb',
+              hover: '#5b0ac5',
+              light: '#f3ebff',
+              dark: '#0e0321',
+              card: '#160830'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.8s ease, color 0.8s ease;
+      background-color: #ffffff;
+      color: #0f172a;
+    }
+
+    body.dark-theme {
+      background-color: #080214;
+      color: #f8fafc;
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .brand-logo-text {
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      position: relative;
+      display: inline-block;
+    }
+
+    .brand-plus {
+      position: absolute;
+      top: 0px;
+      right: -13px;
+      font-size: 0.6em;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .card-transition {
+      transition: background-color 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .dark-theme .card-bg {
+      background-color: rgba(22, 8, 48, 0.7);
+      border-color: rgba(110, 13, 235, 0.25);
+      color: #f1f5f9;
+    }
+
+    .light-theme .card-bg {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 10px 30px -10px rgba(110, 13, 235, 0.08);
+      color: #0f172a;
+    }
+
+    .input-field {
+      transition: all 0.3s ease;
+    }
+
+    .dark-theme .input-field {
+      background-color: rgba(14, 3, 33, 0.8);
+      border-color: rgba(110, 13, 235, 0.3);
+      color: #ffffff;
+    }
+
+    .light-theme .input-field {
+      background-color: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body class="light-theme">
+
+  <!-- Fundo Dinâmico Interativo -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Cabeçalho -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md transition-colors duration-500 border-b border-black/5 dark:border-white/10 py-5">
+    <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="text-3xl text-slate-900 dark:text-white brand-logo-text transition-colors duration-500">
+        maxia<span class="brand-plus text-brand">+</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#quem-somos" class="hover:text-brand transition-colors">Quem Somos</a>
+        <a href="#solucoes" class="hover:text-brand transition-colors">Soluções</a>
+        <a href="#contato" class="hover:text-brand transition-colors">Contato</a>
+      </nav>
+
+      <a href="#contato" class="bg-brand hover:bg-brand-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 shadow-lg shadow-brand/20">
+        Iniciar Projeto
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center space-y-8">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-brand/10 text-brand border border-brand/20">
+        Soluções Digitais de Alta Performance
+      </div>
+
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+        Transformamos a sua ideia em <span class="text-brand">tecnologia.</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed transition-colors duration-500">
+        Engenharia técnica focada em construir plataformas digitais robustas, seguras e prontas para escalar seu negócio.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <a href="#contato" class="w-full sm:w-auto bg-brand hover:bg-brand-hover text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 shadow-xl shadow-brand/25">
+          Falar com Especialista
+        </a>
+        <a href="#solucoes" class="w-full sm:w-auto border border-slate-300 dark:border-slate-700 hover:border-brand text-slate-700 dark:text-slate-200 font-medium px-8 py-4 rounded-xl transition-all duration-300">
+          Ver Soluções
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quem Somos -->
+  <section id="quem-somos" class="py-24 px-6 border-t border-slate-200/50 dark:border-white/5 transition-colors duration-500">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="max-w-2xl">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-3">Quem Somos</h2>
+        <h3 class="text-3xl md:text-4xl font-bold tracking-tight">Especialistas na criação de produtos digitais sob medida.</h3>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 text-slate-600 dark:text-slate-300 leading-relaxed transition-colors duration-500">
+        <p>
+          A <strong class="text-slate-900 dark:text-white">maxia⁺</strong> é uma empresa focada em engenharia de software e inovação digital. Desenvolvemos produtos de alta performance que unem arquitetura técnica sólida, navegação intuitiva e foco em resultados operacionais.
+        </p>
+        <p>
+          Nossa equipe atua no planejamento, design e desenvolvimento de plataformas completas, garantindo segurança, escalabilidade e prazos rigorosos para empresas que necessitam de presença digital relevante.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soluções -->
+  <section id="solucoes" class="py-24 px-6 border-t border-slate-200/50 dark:border-white/5 transition-colors duration-500">
+    <div class="max-w-5xl mx-auto space-y-16">
+      <div class="text-center max-w-2xl mx-auto space-y-4">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand">Nossas Soluções</h2>
+        <h3 class="text-3xl md:text-4xl font-bold tracking-tight">Desenvolvimento Focado em Alta Performance</h3>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <div class="card-bg card-transition p-8 rounded-2xl border">
+          <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-3">Desenvolvimento Web</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+            Sistemas web complexos, portais corporativos, plataformas SaaS e painéis administrativos responsivos e rápidos.
+          </p>
+          <ul class="text-xs font-medium text-slate-600 dark:text-slate-300 space-y-2">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Plataformas Sob Medida
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Arquitetura Escalável & Segura
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Integração via APIs Rest / GraphQL
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card-bg card-transition p-8 rounded-2xl border">
+          <div class="w-12 h-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center mb-6">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h4 class="text-xl font-bold mb-3">Aplicativos Nativos e Multiplataforma</h4>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+            Aplicativos móveis de alta velocidade para iOS e Android com experiência do usuário intuitiva e fluida.
+          </p>
+          <ul class="text-xs font-medium text-slate-600 dark:text-slate-300 space-y-2">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Apps para iOS e Android
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Publicação nas Lojas (App Store e Play Store)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span> Desempenho Otimizado
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form / Contato Directo para WhatsApp -->
+  <section id="contato" class="py-24 px-6 border-t border-slate-200/50 dark:border-white/5 transition-colors duration-500">
+    <div class="max-w-3xl mx-auto">
+      <div class="card-bg card-transition p-8 md:p-12 rounded-3xl border space-y-8">
+        <div class="text-center space-y-3">
+          <h2 class="text-2xl md:text-3xl font-bold">Inicie seu Projeto</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">
+            Preencha os dados abaixo para iniciar a conversa via WhatsApp.
+          </p>
+        </div>
+
+        <form id="whatsappForm" class="space-y-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2">Seu Nome</label>
+              <input type="text" id="nameInput" required placeholder="Digite seu nome" class="input-field w-full px-4 py-3.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider mb-2">Tipo de Solução</label>
+              <select id="serviceInput" class="input-field w-full px-4 py-3.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border">
+                <option value="Desenvolvimento Web">Desenvolvimento Web (Sistemas / Plataformas)</option>
+                <option value="Aplicativo Mobile">Aplicativo (iOS / Android)</option>
+                <option value="Ambos">Ambos os serviços</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider mb-2">Resumo da Ideia ou Projeto</label>
+            <textarea id="messageInput" rows="4" required placeholder="Conte brevemente sobre o que precisa..." class="input-field w-full px-4 py-3.5 rounded-xl text-sm outline-none focus:ring-2 focus:ring-brand border resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-brand hover:bg-brand-hover text-white font-semibold py-4 rounded-xl transition-all duration-300 shadow-xl shadow-brand/25 flex items-center justify-center gap-3">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Enviar Mensagem via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="py-12 border-t border-slate-200/50 dark:border-white/5 transition-colors duration-500">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+      <div class="brand-logo-text text-xl text-slate-900 dark:text-white transition-colors duration-500">
+        maxia<span class="brand-plus text-brand">+</span>
+      </div>
+
+      <div>
+        &copy; <span id="year"></span> maxia⁺. Todos os direitos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // SEU NÚMERO DE DESTINO CONFIGURADO (11 934341057) - Oculto na interface do usuário:
+    const TELEFONE_DESTINO = "5511934341057"; 
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Transição de Tema Claro -> Escuro ao Rolar a Página
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 150) {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+      }
+    });
+
+    // Fundo Dinâmico Interativo (Canvas de Partículas)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 40;
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      const isDark = document.body.classList.contains('dark-theme');
+      const particleColor = isDark ? 'rgba(110, 13, 235, 0.4)' : 'rgba(110, 13, 235, 0.25)';
+      const lineColor = isDark ? 'rgba(110, 13, 235, 0.12)' : 'rgba(110, 13, 235, 0.08)';
+
+      particles.forEach((p, index) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = particleColor;
+        ctx.fill();
+
+        for (let j = index + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 150) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Envio direto para o seu WhatsApp
+    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('nameInput').value;
+      const service = document.getElementById('serviceInput').value;
+      const message = document.getElementById('messageInput').value;
+
+      const formattedText = `Olá! Meu nome é ${name}.\nTenho interesse em: ${service}.\n\nDetalhes do Projeto:\n${message}`;
+      const encodedText = encodeURIComponent(formattedText);
+      
+      window.open(`https://wa.me/${TELEFONE_DESTINO}?text=${encodedText}`, '_blank');
+    });
+  </script>
+</body>
+</html>
